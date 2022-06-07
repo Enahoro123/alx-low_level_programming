@@ -1,12 +1,19 @@
-#include <unistd.h>
-
+#include "main.h"
 /**
- * main - main block
- * Print _putchar.
+ * main - Print "_Putchar" followed by a new line.
  * Return: 0
  */
-int _putchar(c)	
+int main(void)
 {
-	return(write(1,	&c, 1));
+	char putch[] = "_putchar";
+	int i = 0;
 
+	while (putch[i] != '\0')
+	{
+		_putchar(putch[i]);
+		i++;
+	}
+	_putchar('\n');
+
+	return (0);
 }
