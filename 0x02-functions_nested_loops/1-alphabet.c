@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * Print alphabet in lowercase using only `_putchar`
+ * print_al - Print alphabet in lowercase using only '_putchar'
  * Return: 0
  */
-void print_alphabet(void)
+void print_al(void)
 {
 	char al = 'a';
 
