@@ -5,9 +5,8 @@
  * Print _putchar.
  * Return: 0
  */
-int main(void)	
+int _putchar(c)	
 {
-	putchar("_putchar\n");
+	return(write(1,	&c, 1));
 
-	return (0);
 }
