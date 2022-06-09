@@ -4,19 +4,13 @@
 * main - tests function that prints if integer is positive or negative
 * Return: 0
 */
+
 int main(void)
 {
-	int n;
-	
-	n = 98; 
+        int i;
 
-	srand(time(0));
-	n = rand() - RAND_MAX / 2;
+        i = 0;
+        positive_or_negative(i);
 
-	if (n > 0)
-		printf(n, "%i is positive\n");
-	else if (n < 0)
-		printf(n, "%i is negative\n");
-
-	return (0);
+        return (0);
 }
