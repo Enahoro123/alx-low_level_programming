@@ -9,14 +9,14 @@
 
 int _sqrt_recursion(int n)
 {
-	return (sqt(n, 1));
+	return (sqrt(n, 1));
 }
 
 /**
- * sqt - sqt function to solve _sqrt_recursion
+ * sqrt - sqt function to solve _sqrt_recursion
  */
 
-int sqt(int j, int i)
+int sqrt(int j, int i)
 {
 	int square;
 
@@ -24,7 +24,7 @@ int sqt(int j, int i)
 	if (square == j)
 		return (i);
 	else if (square < j)
-		return (sqt(j, i + 1));
+		return (sqrt(j, i + 1));
 	else
 		return (-1);
 }
