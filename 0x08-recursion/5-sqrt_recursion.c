@@ -14,6 +14,9 @@ int _sqrt_recursion(int n)
 
 /**
  * halp - helper function to solve _sqrt_recursion
+ * @j: number to determine square root
+ * @i: increment to compare j
+ * Return: square root if natural, or -1 if none found
  */
 
 int halp(int j, int i)
