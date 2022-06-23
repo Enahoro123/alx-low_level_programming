@@ -1,58 +1,56 @@
-#include "main.h"
-
+#include "holberton.h"
 /**
- * wildcmp - compare two strings with "wildcard expansion" capabilities
- * @s1: string 1
- * @s2: string 2
- * Return: 1 if strings can be considered identical, else 0
+ *_strlen_recursion - a function that accounts for the length of the string.
+ *@s: a pointer variable that points the the string.
+ *Return: A recursive call and the length of the string.
  */
-
-int wildcmp(char *s1, char *s2)
+int _strlen_recursion(char *s)
 {
-	if (*s1 == '\0' && *s2 == '\0')
-		return (1);
-	else if (*s1 == '\0' || *s2 == '\0')
+	if (*s != 0)
 	{
-		if (*s1 == '\0' && *s2 == '*')
-			return wildcmp(s1, ++s2);
-		else if (*s1 == '*' && *s2 == '\0')
-			return wildcmp(++s1, s2);
+		return (1 + _strlen_recursion(++s));
+	}
+	return (0);
+}
+/**
+ *is_palindrome - a function that stores the length of the string in a variable
+ *and checks if the length is one 1, if it's 1 it will
+ *return 1 which means it's a palindrome.
+ *@s: A pointer variable that points the string.
+ *Return: The helper function where the length of the
+ *string is taken into account and the length - 1
+ */
+int is_palindrome(char *s)
+{
+	int length;
+
+	length = _strlen_recursion(s);
+	if (length <= 1)
+	{
+		return (1);
+	}
+	return (helper(s, length - 1));
+}
+/**
+ *helper - a function that checks each letter in the string
+ *to see if they are equal. The ascii value of the character
+ *is taken into consideration
+ *@length: A variable that has the length of the string stored
+ *@s: a pointer that points the the original string
+ *Return: Moves through the string.
+ */
+int helper(char *s, int length)
+{
+	if (length <= 0)
+	{
+		return (1);
+	}
+	else if (*s != s[length])
+	{
 		return (0);
 	}
-
-	if (*s1 == *s2)
+	else
 	{
-		return wildcmp(++s1, ++s2);
+		return (helper(s + 1, length - 2));
 	}
-	else if (*s1 == '*')
-	{
-		if (*(s1 + 1) == '*')
-			return wildcmp(++s1, s2);
-		else
-		{
-			return wildcmp(s1, findsrc(s2, *(s1 + 1), 0, 0) + s2);
-		}
-	}
-	else if (*s2 == '*')
-	{
-		if (*(s2 + 1) == '*')
-			return wildcmp(s1, ++s2);
-		else
-		{
-			return wildcmp(s1 + findsrc(s1, *(s2 + 1), 0, 0), s2);
-		}
-	}
-
-	return (0);
-
-}
-
-int findsrc(char *s, char c, int i, int j)
-{
-	if (*(s + i) == '\0')
-		return (j + 1);
-	else if (*(s + i) == c || *(s + i) == '*')
-		j = i;
-
-	return (findsrc(s, c, i + 1, j));
 }
