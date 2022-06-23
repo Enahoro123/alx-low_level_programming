@@ -1,56 +1,50 @@
 #include "main.h"
+
 /**
- *_strlen_recursion - a function that accounts for the length of the string.
- *@s: a pointer variable that points the the string.
- *Return: A recursive call and the length of the string.
+ * is_palindrome - check if a string is a palindrome
+ * @s: char array string
+ * Return: 1 if palindrome, 0 if not
  */
-int _strlen_recursion(char *s)
-{
-	if (*s != 0)
-	{
-		return (1 + _strlen_recursion(++s));
-	}
-	return (0);
-}
-/**
- *is_palindrome - a function that stores the length of the string in a variable
- *and checks if the length is one 1, if it's 1 it will
- *return 1 which means it's a palindrome.
- *@s: A pointer variable that points the string.
- *Return: The helper function where the length of the
- *string is taken into account and the length - 1
- */
+
 int is_palindrome(char *s)
 {
 	int length;
 
-	length = _strlen_recursion(s);
-	if (length <= 1)
-	{
-		return (1);
-	}
-	return (helper(s, length - 1));
+	length = get_length(s) - 1;
+
+	return (my_pal(s, --length));
 }
+
 /**
- *helper - a function that checks each letter in the string
- *to see if they are equal. The ascii value of the character
- *is taken into consideration
- *@length: A variable that has the length of the string stored
- *@s: a pointer that points the the original string
- *Return: Moves through the string.
+ * get_length - gets length of string
+ * @s: string
+ * Return: return length of string
  */
-int helper(char *s, int length)
+
+int get_length(char *s)
 {
-	if (length <= 0)
-	{
+	if (*s == '\0')
 		return (1);
-	}
-	else if (*s != s[length])
+	else
+		return (1 + get_length(++s));
+}
+
+/**
+ * my_pal - recursive check of palindrome
+ * @s: string
+ * @l: length of string
+ * Return: 1 if palindrome, 0 if not
+ */
+
+int my_pal(char *s, int l)
+{
+	if (*s == *(s + l))
 	{
-		return (0);
+		if (l <= 0)
+			return (1);
+		else
+			return (my_pal(++s, l - 2));
 	}
 	else
-	{
-		return (helper(s + 1, length - 2));
-	}
+		return (0);
 }
