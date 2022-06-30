@@ -30,9 +30,9 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		else
 			c[i] = s2[j++];
 	}
-	j[i] = '\0';
+	c[i] = '\0';
 
-	return (j);
+	return (c);
 }
 
 /**
